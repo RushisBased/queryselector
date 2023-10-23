@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<style></style>
+		<script>
+            function initialize()
+            {
+                numberOutput = document.getElementById("numoutput");
+                mymessage=document.getElementById("message");
+                number=0;
+                message = "Number is 0";
+                mymessage.innerHTML=message;
+            }
+            function modifyNumber(modifier)
+            {
+                number += modifier;
+                changeMessage();
+                display();
+            }
+            function display()
+            {
+                numberOutput.innerHTML = number;
+                mymessage.innerHTML=message;
+            }
+            function getRandomInteger(lower,upper)
+            {
+                var multiplier = upper - (lower-1);
+                var rnd = parseInt(Math.random()*multiplier)+lower;
+                return rnd;
+            }
+            function changeMessage()
+            {
+                if(number>0)
+                {
+                    message="Current Number is " + number  + " and is positive";
+                    document.querySelector("p").style.backgroundColor="green";
+                }else{
+                    message="Current Number is " + number  + " and is negative";
+                    document.querySelector("p").style.backgroundColor="red";
+                }
+                if(number%2==0)
+                {
+                    message+=" and is even";
+                    if(number>0){
+                    document.querySelector("p").style.backgroundColor="yellow";
+                    }
+                }else{
+                    message+=" and is odd";
+                    if(number<0)
+                    {
+                    document.querySelector("p").style.backgroundColor="blue";
+                    }
+                }
+            }
+            
+        </script>
+	</head>
+	<body onload ="initialize();">
+        <div id = "numoutput">0</div>
+        <p>Wowie <span id="message"></span></p>
+        <hr />
+        <button onclick = "modifyNumber(getRandomInteger(-10,10));"> Modify the number randomly</button>
+        <button onclick="modifyNumber(1);">Add 1</button>
+        <button onclick="modifyNumber(-1);">Subtract 1</button>
+        <button onclick="modifyNumber(3);">Add 3</button>
+        <button onclick="modifyNumber(-3);">Subtract 3</button>
+        <button onclick="modifyNumber(7);">Add 7</button>
+        <button onclick="modifyNumber(-7);">Subtract 7</button>
+	</body>
+</html>
